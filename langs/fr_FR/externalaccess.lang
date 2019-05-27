@@ -69,6 +69,12 @@ EALINKNAME_orders=Commandes
 
 PersonalInformations=Informations personnelles
 
+
+
+
+EALINKNAME_fichinter=Fiche d intervention
+
+
 # PAGE TITLE
 Welcome=Bienvenue
 WelcomeDesc=Bienvenue sur votre portail client
