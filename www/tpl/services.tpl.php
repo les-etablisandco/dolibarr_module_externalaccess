@@ -30,7 +30,19 @@ if ($reshook < 0) $context->setEventMessages($hookmanager->error,$hookmanager->e
 
 if(empty($reshook)){ 
 
-    if($conf->global->EACCESS_ACTIVATE_PROPALS && !empty($user->rights->externalaccess->view_propals)){
+    
+    //if($conf->global->EACCESS_ACTIVATE_FICHINTER && !empty($user->rights->externalaccess->view_propals))
+    {
+        $link = $context->getRootUrl('fichinter');
+        printService($langs->trans('FICHE INTERV'),'fa-pencil',$link); // desc : $langs->trans('QuotationsDesc')
+    }
+    
+    
+    
+    
+    
+   if($conf->global->EACCESS_ACTIVATE_PROPALS && !empty($user->rights->externalaccess->view_propals))
+    {
         $link = $context->getRootUrl('propals');
         printService($langs->trans('Quotations'),'fa-pencil',$link); // desc : $langs->trans('QuotationsDesc')
     }

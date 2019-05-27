@@ -75,6 +75,12 @@ class Actionsexternalaccess
 		        $context->desc = $langs->trans('WiewInvoicesDesc');
 		        $context->menu_active[] = 'invoices';
 		    }
+             elseif($context->controller == 'fichinter')
+		    {
+		        $context->title = $langs->trans('Wiewfichinter');
+		        $context->desc = $langs->trans('WiewfichinterDesc');
+		        $context->menu_active[] = 'fichinter';
+		    }
 		    elseif($context->controller == 'orders')
 		    {
 		        $context->title = $langs->trans('WiewOrders');
@@ -229,7 +235,16 @@ class Actionsexternalaccess
 	            }
 	            return 1;
 	        }
-	        elseif($context->controller == 'propals')
+	        elseif($context->controller == 'fichinter')
+	        {
+				$context->setControllerFound();
+	            //if($conf->global->EACCESS_ACTIVATE_PROPALS && !empty($user->rights->externalaccess->view_propals))
+	            {
+	                $this->print_fichinterList($user->societe_id);
+	            }
+	            return 1;
+	        }
+             elseif($context->controller == 'propals')
 	        {
 				$context->setControllerFound();
 	            if($conf->global->EACCESS_ACTIVATE_PROPALS && !empty($user->rights->externalaccess->view_propals))
@@ -251,7 +266,17 @@ class Actionsexternalaccess
 	    
 		return 0;
 	}
-	
+    
+    
+    
+    public function print_fichinterList($socId = 0)
+	{
+	    print '<section id="section-invoice"><div class="container">';
+	    //print_invoiceList($socId);
+	    print_fichinterTable($socId);
+	    print '</div></section>';
+	}
+    
 	public function print_invoiceList($socId = 0)
 	{
 	    print '<section id="section-invoice"><div class="container">';
@@ -276,6 +301,9 @@ class Actionsexternalaccess
 	    print '</div></section>';
 	}
 	
+    
+    
+    
 	public function print_personalinformations()
 	{
 	    global $langs,$db,$user;
